@@ -92,6 +92,7 @@ function getCurrentPrice(companyName) {
                 console.log("this is the price within the then block ", price);
                 printCurrentPrice(price);
             })
+            // .catch(()=> output.innerText = "Invalid API call")
     }
 
 }
@@ -167,10 +168,14 @@ stockName.addEventListener("input", function clickHandler() {
 btnCheck.addEventListener("click", function clickHandler() {
     var initial = Number(initialPrice.value);
     var stockPrice = Number(price);
-    var quantity = Number(quantity.value);
-    if(initial && price && quantity && companyFullName)
+    var stockQuantity = Number(quantity.value);
+    if(initial && price && stockQuantity && companyFullName)
     {
-        calculateProfitOrLoss(initial, stockPrice, quantity);
+        console.log(initial && price && stockQuantity && companyFullName)
+        calculateProfitOrLoss(initial, stockPrice, stockQuantity);
+    }
+    else{
+        output.innerText = "please fill all the fields";
     }
     
 })
