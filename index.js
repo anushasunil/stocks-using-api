@@ -5,18 +5,20 @@ var stockName = document.querySelector(".stock-name");
 var optionList = document.querySelector("datalist");
 var btnCheck = document.querySelector(".btn-check");
 var output = document.querySelector(".output");
+var currencyDisplay  = document.querySelectorAll(".currency") //span element, indicating the currency
 
-var str = "";
-var globalQuoteJson = {};
-var companyIndexInJson = 0;
+var str = "";              //to store the string of dropdown options list 
+var bestMatches = {};      //to store the company details whose name actually matches with the input typed
+var globalQuoteJson = {}; //this json contains price detail of the company fetched by its symbol
+var companyFullName = ""; 
 var currency = "";
+var companySymbol = ""
+var price = "";
 
 
-function getDataFromAPI(stockName) {
-    // var url = "https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol="+stockName+"&apikey=LTLP02A360UTW9WY"
-    // fetch(url)
-    // .then(response => response.json())
-    // .then(json => console.log(json["Global Quote"]["05. price"]))
+
+function calculateProfitOrLoss(initial) {
+    
 }
 
 function getOptionList(name) {
@@ -25,8 +27,8 @@ function getOptionList(name) {
         .then(response => response.json())
         .then(json => {
             console.log(json);
-            globalQuoteJson = json["bestMatches"];
-            getDropDownList(globalQuoteJson);
+            bestMatches = json["bestMatches"];
+            getDropDownList(bestMatches);
         })
         .catch(errorhandler)
 }
@@ -41,33 +43,40 @@ function getDropDownList(json) {
     optionList.innerHTML = str;
 }
 
-// function convertSymbolToCompanyName(symbol) {
+function getCurrentPrice(companyName) {
 
-//     var nameOfCompany = ""
-//     fetch(symbolUrl)
-//         .then(response => response.json())
-//         .then(json => {
-//             console.log(json);
-//             for (var i = 0; i < json.length; i++) {
-//                 if (symbol === json[i]["symbol"]) {
-//                    console.log("this the symbol= ", symbol);
-//                    console.log("this the api symbol= ", json[i]["symbol"]);
-//                     nameOfCompany = json[i]["name"];
-//                     break;
-//                 }
-//                 else{
-//                     nameOfCompany = symbol;
-//                 }
-//             }
-//             console.log("this is the company name ", nameOfCompany)
-//             return nameOfCompany;
-//         })
-// }
+    if (companyName !== "") {
+        console.log(bestMatches);
 
-function displayCurrentPrice(companyName){
-    console.log(globalQuoteJson);
-    console.log(companyName);
+        Object.keys(bestMatches).map((x) => {
+            if (companyName === bestMatches[x]["2. name"]) {
+                currency = bestMatches[x]["8. currency"];
+                companySymbol = bestMatches[x]["1. symbol"];
+            }
+        })
+        console.log("company ", companyName, "currency ", currency, "symbol ", companySymbol);
 
+        var url = "https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=" + companySymbol + "&apikey=LTLP02A360UTW9WY"
+        fetch(url)
+            .then(response => response.json())
+            .then(json => {
+                globalQuoteJson = json;
+                console.log("this is globaljson", globalQuoteJson)
+                
+                price = globalQuoteJson["Global Quote"]["05. price"];
+                console.log("this is the price within the then block ",price);
+                printCurrentPrice(price);
+            })
+    }
+
+}
+
+function printCurrentPrice(price)
+{
+    console.log("print the price here ",price);
+    currencyDisplay[0].innerText = " in "+ currency;
+    currencyDisplay[1].innerText = " in "+ currency;
+    currentPrice.innerText = price;
 }
 
 function errorhandler() {
@@ -76,7 +85,8 @@ function errorhandler() {
 
 stockName.addEventListener("input", function clickHandler() {
 
-    str="";
+    str = "";
     getOptionList(stockName.value);
-    displayCurrentPrice(stockName.value);
+    companyFullName = stockName.value;
+    getCurrentPrice(companyFullName);
 })
