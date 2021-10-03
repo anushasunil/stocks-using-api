@@ -12,20 +12,20 @@ var links = document.querySelectorAll(".link");
 var heading = document.querySelector(".heading");
 var body = document.querySelector(".body");
 
-var currencyDisplay  = document.querySelectorAll(".currency") //span element, indicating the currency
+var currencyDisplay = document.querySelectorAll(".currency") //span element, indicating the currency
 
-var str = "";    //to store the string of dropdown options list 
-var bestMatches = {};    //to store the company details whose name actually matches with the input typed
+var str = ""; //to store the string of dropdown options list 
+var bestMatches = {}; //to store the company details whose name actually matches with the input typed
 var globalQuoteJson = {}; //this json contains price detail of the company fetched by its symbol
-var companyFullName = ""; 
+var companyFullName = "";
 var currency = "";
 var companySymbol = ""
 var price = "";
 
 
 
-function calculateProfitOrLoss(initial, current,quantity) {
-    console.log("initial",initial,current,quantity)
+function calculateProfitOrLoss(initial, current, quantity) {
+    console.log("initial", initial, current, quantity)
     if (initial > current) {
         var loss = (initial - current) * quantity;
         var lossPercentage = (loss / initial).toFixed(2);
@@ -87,20 +87,19 @@ function getCurrentPrice(companyName) {
             .then(json => {
                 globalQuoteJson = json;
                 console.log("this is globaljson", globalQuoteJson)
-                
+
                 price = globalQuoteJson["Global Quote"]["05. price"];
-                console.log("this is the price within the then block ",price);
+                console.log("this is the price within the then block ", price);
                 printCurrentPrice(price);
             })
     }
 
 }
 
-function printCurrentPrice(price)
-{
-    console.log("print the price here ",price);
-    currencyDisplay[0].innerText = " in "+ currency;
-    currencyDisplay[1].innerText = " in "+ currency;
+function printCurrentPrice(price) {
+    console.log("print the price here ", price);
+    currencyDisplay[0].innerText = " in " + currency;
+    currencyDisplay[1].innerText = " in " + currency;
     currentPrice.innerText = price;
 }
 
@@ -165,6 +164,6 @@ stockName.addEventListener("input", function clickHandler() {
     getCurrentPrice(companyFullName);
 })
 
-btnCheck.addEventListener("click", function clickHandler(){
+btnCheck.addEventListener("click", function clickHandler() {
     calculateProfitOrLoss(Number(initialPrice.value), Number(price), Number(quantity.value));
 })
