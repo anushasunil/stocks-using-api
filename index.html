@@ -7,9 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Stocks - Using API </title>
     <style>
-        label,button {
+        input,textarea, button {
             display: block;
         }
+        
     </style>
 </head>
 
@@ -20,12 +21,12 @@
     <input list="stockName" type="text" name="stock-name" class="stock-name">
     <datalist id="stockName">
     </datalist>
-    <label for="initial-price">Initial Price</label>
+    <label for="initial-price">Initial Price</label><span class="currency"></span>
     <input type="number" name="initial-price" class="initial-price">
     <label for="quantity">Quantity</label>
     <input type="number" name="quantity" class="quantity">
-    <label for="current-price">Current Price</label>
-    <input type="number" name="current-price" class="current-price">
+    <label for="current-price">Current Price</label><span class="currency"></span>
+    <textarea type="number" name="current-price" class="current-price" ></textarea>
     <button class="btn-check">Check</button>
     <h3 class="output"></h3>
 
