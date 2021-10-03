@@ -165,5 +165,12 @@ stockName.addEventListener("input", function clickHandler() {
 })
 
 btnCheck.addEventListener("click", function clickHandler() {
-    calculateProfitOrLoss(Number(initialPrice.value), Number(price), Number(quantity.value));
+    var initial = Number(initialPrice.value);
+    var stockPrice = Number(price);
+    var quantity = Number(quantity.value);
+    if(initial && price && quantity && companyFullName)
+    {
+        calculateProfitOrLoss(initial, stockPrice, quantity);
+    }
+    
 })
