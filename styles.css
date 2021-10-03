@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+
+body {
+
+    max-width: 40%;
+    margin: auto;
+    font-family: 'Bebas Neue', cursive;
+    margin-top: 5%;
+}
+
+.container {
+    border: 0.7rem double black;
+    text-align: left;
+}
+
+h1 {
+    text-align: center;
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    letter-spacing: 1px;
+}
+
+p {
+    font-size: 2rem;
+    margin-top: 0rem;
+    margin-bottom: 0rem;
+}
+
+label {
+    font-size: 1.5rem;
+    margin-left:20.5%;
+    margin-right: 4%;
+}
+
+span {
+    font-size: 1.2rem;
+    opacity:0.7;
+}
+
+
+input, textarea {
+    display: block;
+    margin: auto;
+    width: 60%;
+    height: 2.5rem;
+    border-radius: 0.2rem;
+    font-size: 1.4rem;
+    font-family: 'Bebas Neue', cursive;
+    margin-bottom: 1rem;
+}
+
+textarea {
+    resize: none;
+    padding: 1%;
+    font-size: 1.5rem;
+}
+
+.btn-check {
+    display: block;
+    margin: auto;
+    padding: 0.5rem;
+    width: fit-content;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    font-size: 1.4rem;
+    font-family: 'Bebas Neue', cursive;
+    font-weight: bold;
+    letter-spacing: 1px;
+    background-color: white;
+
+}
+
+div, h3 {
+    text-align: center;
+    font-size: 1.7rem;
+    margin-bottom: 1.5rem;
+
+}
+
+
+footer {
+    font-size: 1.5rem;
+    text-align: center;
+    color: black;
+    padding-top: 0.5rem;
+}
+
+footer .link {
+    color: black;
+}
+
+footer ul {
+    padding-inline-start: 0px;
+
+}
+
+footer .link:hover {
+    text-decoration: underline;
+}
+
+.link {
+    max-width: min-content;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--primary-color);
+
+}
+
+.list-non-bullet {
+    list-style: none;
+}
+
+.list-item-inline {
+    display: inline;
+}
