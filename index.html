@@ -6,16 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Stocks - Using API </title>
-    <style>
-        input,textarea, button {
-            display: block;
-        }
-        
-    </style>
+    <link rel="stylesheet" href="styles.css">
+    
 </head>
 
-<body>
-    <h1>Stocks Prediction</h1>
+<body class="body">
+    <div class="container">
+        <h1 class="heading">Stocks Prediction
+            <p>Using API</p>
+        </h1>
 
     <label for="stock-name">Stock Name:</label>
     <input list="stockName" type="text" name="stock-name" class="stock-name">
@@ -26,9 +25,21 @@
     <label for="quantity">Quantity</label>
     <input type="number" name="quantity" class="quantity">
     <label for="current-price">Current Price</label><span class="currency"></span>
-    <textarea type="number" name="current-price" class="current-price" ></textarea>
+    <textarea type="number" name="current-price" class="current-price"  ></textarea>
     <button class="btn-check">Check</button>
     <h3 class="output"></h3>
+    </div>
+    
+
+    <footer class="footer">
+        <div class="footer-header">social media presence </div>
+        <ul class="social-links">
+            <li class="list-item-inline"><a class="link" href="https://github.com/anushasunil">github</a></li>
+            <li class="list-item-inline"><a class="link"
+                    href="https://www.linkedin.com/in/anusha-sunilkumar-064200207/">linkedin</a></li>
+            <li class="list-item-inline"><a class="link" href="https://www.instagram.com/_.anu7/">instagram</a></li>
+        </ul>
+    </footer>
 
     <script src="index.js"></script>
 </body>
