@@ -83,6 +83,10 @@ h3 {
 
 }
 
+h3 {
+    letter-spacing: 1px;
+}
+
 
 footer {
     font-size: 1.5rem;
