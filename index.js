@@ -11,6 +11,7 @@ var footer = document.querySelector("footer");
 var links = document.querySelectorAll(".link");
 var heading = document.querySelector(".heading");
 var body = document.querySelector(".body");
+var subtitle = document.querySelector("p");
 
 var currencyDisplay = document.querySelectorAll(".currency") //span element, indicating the currency
 
@@ -124,6 +125,7 @@ function changeBackground(status) {
 
 function paintItWhite() {
     heading.style.color = "white";
+    subtitle.style.color = "white";
     body.style.borderColor = "white";
     output.style.color = "white";
     footer.style.color = "white";
