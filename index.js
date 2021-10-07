@@ -29,14 +29,14 @@ function calculateProfitOrLoss(initial, current, quantity) {
     console.log("initial", initial, current, quantity)
     if (initial > current) {
         var loss = (initial - current) * quantity;
-        var lossPercentage = (loss / initial).toFixed(2);
+        var lossPercentage = ((loss / initial)*10).toFixed(2);
         changeBackground("loss")
 
 
         output.innerText = "The loss is  ₹ " + loss.toFixed(2) + " and " + lossPercentage + "% 😥";
     } else if (current > initial) {
         var profit = (current - initial) * quantity;
-        var profitPercentage = (profit / initial).toFixed(2);
+        var profitPercentage = ((profit /initial)*10).toFixed(2);
         changeBackground("profit")
 
         output.innerText = "The profit is  ₹ " + profit.toFixed(2) + " and " + profitPercentage + "% 😃";
@@ -159,7 +159,7 @@ function errorhandler() {
     console.log("Enter a valid Stock Name.");
 }
 
-stockName.addEventListener("input", function clickHandler() {
+stockName.addEventListener("input", function inputHandler() {
 
     str = "";
     getOptionList(stockName.value);
@@ -167,7 +167,7 @@ stockName.addEventListener("input", function clickHandler() {
     getCurrentPrice(companyFullName);
 })
 
-btnCheck.addEventListener("click", function clickHandler() {
+btnCheck.addEventListener("click", function btnClickHandler() {
     var initial = Number(initialPrice.value);
     var stockPrice = Number(price);
     var stockQuantity = Number(quantity.value);
